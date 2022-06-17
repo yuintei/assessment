@@ -18,15 +18,27 @@ assessmentButton.onclick = function () {
     }
     console.log(userName);
     //診断結果エリアの作成
+    //headerDevidedの作成
     resultDivided.innerText = '';
-    const header = document.createElement('h3');
-    header.innerText = '診断結果';
-    resultDivided.appendChild(header);
+    const headerDevided = document.createElement('div');
+    headerDevided.innerText = '診断結果';
+    headerDevided.setAttribute('class', 'card-header');
+    resultDivided.appendChild(headerDevided);
+
+    //bodyDevidedの作成
+    const bodyDevided = document.createElement('div');
+    bodyDevided.setAttribute('class', 'card-body');
 
     const paragraph = document.createElement('p');
+    paragraph.setAttribute('class', 'card-text');
     const result = assessment(userName);
     paragraph.innerText = result;
-    resultDivided.appendChild(paragraph);
+    bodyDevided.appendChild(paragraph);
+    resultDivided.appendChild(bodyDevided);
+
+    //resultDevidedにBootstrapのスタイルを適用する
+    resultDivided.setAttribute('class', 'card');
+    resultDivided.setAttribute('style', 'max-width: 700px;');
 
     //TODO ツイートエリアの作成
     tweetDivided.innerText = '';
